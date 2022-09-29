@@ -1,6 +1,6 @@
 import unittest
 import uuid
-from dataclasses import is_dataclass
+from dataclasses import FrozenInstanceError, is_dataclass
 
 from src.commons.domain.exceptions import InvalidUUID
 from src.commons.domain.value_objects import UniqueEntityId
@@ -27,5 +27,14 @@ class TestUniqueEntityIdUnit(unittest.TestCase):
         self.assertEqual(value_object_uuid4.id, str(uuid4_value))
 
     def test_generate_id_when_no_passed_id_in_constructor(self):
-        value_object_uuid4 = UniqueEntityId()
-        self.assertTrue(uuid.UUID(value_object_uuid4.id))
+        value_object = UniqueEntityId()
+        self.assertTrue(uuid.UUID(value_object.id))
+
+    def test_is_immutable(self):
+        """
+        dataclass(frozen=True)
+        UniqueEntityId object attribute 'id' is read-only
+        """
+        with self.assertRaises(FrozenInstanceError):
+            value_object = UniqueEntityId()
+            value_object.id = "Fake ID"
