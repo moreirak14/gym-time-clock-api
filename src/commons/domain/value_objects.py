@@ -1,5 +1,6 @@
 import uuid
 from dataclasses import dataclass, field
+
 from src.commons.domain.exceptions import InvalidUUID
 
 
@@ -16,4 +17,3 @@ class UniqueEntityId:
             uuid.UUID(self.id)
         except ValueError as error:
             raise InvalidUUID() from error
-

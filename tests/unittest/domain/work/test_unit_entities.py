@@ -1,6 +1,7 @@
 import unittest
-from datetime import datetime
 from dataclasses import is_dataclass
+from datetime import datetime
+
 from src.domain.work.entity.work import Work, WorkStatus
 
 
