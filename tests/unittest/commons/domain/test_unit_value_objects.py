@@ -38,3 +38,7 @@ class TestUniqueEntityIdUnit(unittest.TestCase):
     def test_generate_id_when_no_passed_id_in_constructor(self):
         value_object = UniqueEntityId()
         self.assertTrue(uuid.UUID(value_object.id))
+
+    def test_is_id_return_str(self):
+        value_object = UniqueEntityId()
+        self.assertEqual(value_object.id, str(value_object))
