@@ -3,6 +3,8 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Optional
 
+from src.commons.domain.entities import Entity
+
 
 class WorkStatus(enum.Enum):
     Input = "input"
@@ -10,8 +12,8 @@ class WorkStatus(enum.Enum):
 
 
 @dataclass(frozen=True)
-class Work:
-    work_status: WorkStatus
+class Work(Entity):
+    work_status: Optional[WorkStatus] = None
     description: Optional[str] = None
     registered_at: Optional[datetime] = field(
         default_factory=lambda: datetime.now(timezone.utc))
