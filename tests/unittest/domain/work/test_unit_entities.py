@@ -1,5 +1,5 @@
 import unittest
-from dataclasses import is_dataclass
+from dataclasses import FrozenInstanceError, is_dataclass
 from datetime import datetime
 
 from src.domain.work.entity.work import Work, WorkStatus
@@ -9,6 +9,15 @@ class TestWorkUnit(unittest.TestCase):
 
     def test_if_is_a_dataclass(self):
         self.assertTrue(is_dataclass(Work))
+
+    def test_is_immutable(self):
+        """
+        dataclass(frozen=True)
+        UniqueEntityId object attribute 'id' is read-only
+        """
+        with self.assertRaises(FrozenInstanceError):
+            value_object = Work(work_status=WorkStatus.Input)
+            value_object.work_status = "output"
 
     def test_constructor(self):
         work = Work(work_status=WorkStatus.Input)

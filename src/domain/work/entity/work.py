@@ -9,7 +9,7 @@ class WorkStatus(enum.Enum):
     Output = "output"
 
 
-@dataclass()
+@dataclass(frozen=True)
 class Work:
     work_status: WorkStatus
     description: Optional[str] = None

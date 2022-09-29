@@ -11,6 +11,15 @@ class TestUniqueEntityIdUnit(unittest.TestCase):
     def test_if_is_a_dataclass(self):
         self.assertTrue(is_dataclass(UniqueEntityId))
 
+    def test_is_immutable(self):
+        """
+        dataclass(frozen=True)
+        UniqueEntityId object attribute 'id' is read-only
+        """
+        with self.assertRaises(FrozenInstanceError):
+            value_object = UniqueEntityId()
+            value_object.id = "Fake ID"
+
     def test_throw_exception_when_uuid_is_invalid(self):
         with self.assertRaises(InvalidUUID) as error:
             UniqueEntityId(id="Fake ID")
@@ -29,12 +38,3 @@ class TestUniqueEntityIdUnit(unittest.TestCase):
     def test_generate_id_when_no_passed_id_in_constructor(self):
         value_object = UniqueEntityId()
         self.assertTrue(uuid.UUID(value_object.id))
-
-    def test_is_immutable(self):
-        """
-        dataclass(frozen=True)
-        UniqueEntityId object attribute 'id' is read-only
-        """
-        with self.assertRaises(FrozenInstanceError):
-            value_object = UniqueEntityId()
-            value_object.id = "Fake ID"
