@@ -2,6 +2,7 @@ import unittest
 from abc import ABC
 from dataclasses import dataclass, is_dataclass
 from typing import Optional
+
 from src.commons.domain.entities import Entity
 from src.commons.domain.value_objects import UniqueEntityId
 
