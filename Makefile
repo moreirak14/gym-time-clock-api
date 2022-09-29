@@ -1,4 +1,4 @@
-.PHONY: help setup requirements lint pre-commit copy-envs clean
+.PHONY: help setup requirements lint pre-commit copy-envs clean test report
 
 PROJECT_NAME := gym-time-clock-api
 
@@ -39,3 +39,9 @@ clean: ## Clean up
 	rm -rf celerybeat-schedule
 	rm -rf *.pyc
 	rm -rf *__pycache__
+
+test: ## Run tests locally
+	poetry run pytest --cov=src --color=yes tests/
+
+report: test ## Create test report
+	pytest --cov-report html:./htmlcov
