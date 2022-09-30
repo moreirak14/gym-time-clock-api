@@ -48,5 +48,12 @@ jobs:
       run: |
         poetry run pre-commit run --all-files
 
+    #----------------------------------------------
+    #  -----  install and running pytest  -----
+    #----------------------------------------------
+    - name: Install pytest
+      run: |
+        pip install pytest
     - name: Run test
-      run: poetry run pytest --cov=src --color=yes tests/
+      run: |
+        poetry run pytest --cov=src --color=yes tests/
