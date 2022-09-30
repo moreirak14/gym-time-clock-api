@@ -51,9 +51,9 @@ jobs:
     #----------------------------------------------
     #  -----  install and running pytest  -----
     #----------------------------------------------
-    - name: Install pytest
+    - name: Install pytest-cov
       run: |
-        pip install pytest
+        pip install pytest-cov
     - name: Run test
       run: |
         poetry run pytest --cov=src --color=yes tests/
