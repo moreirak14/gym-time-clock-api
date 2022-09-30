@@ -45,3 +45,10 @@ test: ## Run tests locally
 
 report: test ## Create test report
 	pytest --cov-report html:./htmlcov
+
+migration-local: ## Database migration locally
+	poetry run alembic revision --autogenerate -m '$(filter-out $@,$(MAKECMDGOALS))'
+
+migrate-local: ## Database migrate locally
+	poetry run alembic upgrade head
+	poetry run alembic stamp head
