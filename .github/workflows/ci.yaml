@@ -14,7 +14,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    name: Lint
+    name: Lint | Tests
     runs-on: ubuntu-latest
     steps:
     #----------------------------------------------
@@ -44,7 +44,16 @@ jobs:
       run: |
         pip install pre-commit && pip install setuptools
 
-
     - name: Run pre-commit
       run: |
         poetry run pre-commit run --all-files
+
+    #----------------------------------------------
+    #  -----  install and running pytest  -----
+    #----------------------------------------------
+    - name: Install pytest-cov
+      run: |
+        pip install pytest-cov
+    - name: Run test
+      run: |
+        poetry run pytest --cov=src --color=yes tests/
