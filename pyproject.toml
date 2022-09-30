@@ -8,6 +8,7 @@ authors = ["moreirak14 <kaiquemoreiracloud@gmail.com>"]
 python = "^3.10"
 dynaconf = "^3.1.11"
 alembic = "^1.8.1"
+mysql-connector-python = "^8.0.30"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.10.1"
