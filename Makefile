@@ -1,4 +1,4 @@
-.PHONY: help setup requirements lint pre-commit copy-envs clean test report
+.PHONY: help setup requirements lint pre-commit copy-envs clean test report run-local run-docker
 
 PROJECT_NAME := gym-time-clock-api
 
@@ -52,3 +52,9 @@ migration-local: ## Database migration locally
 migrate-local: ## Database migrate locally
 	poetry run alembic upgrade head
 	poetry run alembic stamp head
+
+run-local: ## Run server locally
+	python main.py
+
+run-docker: ## Run server on docker instance
+	docker-compose up -d

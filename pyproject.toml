@@ -9,6 +9,8 @@ python = "^3.10"
 dynaconf = "^3.1.11"
 alembic = "^1.8.1"
 mysql-connector-python = "^8.0.30"
+fastapi = "^0.85.0"
+uvicorn = "^0.18.3"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.10.1"

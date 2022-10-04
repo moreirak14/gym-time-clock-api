@@ -1,2 +1,10 @@
 # Environments for default use in application
 [default]
+REST_APPLICATION_HOST="0.0.0.0"
+REST_APPLICATION_PORT=8080
+REST_APPLICATION_RELOAD=true
+REST_APPLICATION_LOG_LEVEL="DEBUG"
+REST_APPLICATION_WORKERS=3
+REST_APPLICATION_NAME="Gym Time Clock"
+REST_APPLICATION_DESCRIPTION="Gym Time Clock Application"
+REST_APPLICATION_URL_CORS=["http://localhost", "http://localhost:8080", "http://localhost:3000"]

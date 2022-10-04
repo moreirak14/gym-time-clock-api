@@ -1,4 +1,8 @@
-version: "3.9"
+version: "3.7"
+
+networks:
+  subnet_gym:
+    name: subnet_gym
 
 services:
   api:
@@ -18,7 +22,6 @@ services:
 
   db:
     image: mysql:8
-    platform: linux/amd64
     container_name: "mysql_gym_time_clock"
     env_file: .env
     hostname: "${DATABASE_HOST}"
@@ -31,7 +34,3 @@ services:
       - MYSQL_PASSWORD=${DATABASE_PASSWORD}
       - MYSQL_USER=${DATABASE_USER}
       - MYSQL_DATABASE=${DATABASE_NAME}
-
-networks:
-  subnet_gym:
-    name: subnet_gym
