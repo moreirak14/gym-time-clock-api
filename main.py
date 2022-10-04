@@ -3,25 +3,28 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
-from config import settings
-from src.commons.middleware.middleware import LoggerMiddleware
-from src.adapters.orm import start_mappers
-from src.infrastructure.api.v1 import router as v1_router
-from src.commons.logger.logger import setup_logger
 
+from config import settings
+from src.adapters.orm import start_mappers
+from src.commons.logger.logger import setup_logger
+from src.commons.middleware.middleware import LoggerMiddleware
+from src.infrastructure.api.v1 import router as v1_router
 
 setup_logger()
 logger = logging.getLogger(__name__)
 
 
 def get_app() -> FastAPI:
-    middleware = [Middleware(CORSMiddleware, allow_origin=[str(origin) for
-                                                          origin in
-                                                           settings.REST_APPLICATION_URL_CORS],
-                             allow_credentials=True,
-                             allow_methods=["*"],
-                             allow_headers=["*"],
-                             )]
+    middleware = [
+        Middleware(
+            CORSMiddleware,
+            allow_origins=[
+                str(origin) for origin in settings.REST_APPLICATION_URL_CORS
+            ],
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+             )]
 
     app = FastAPI(middleware=middleware,
                   title=settings.REST_APPLICATION_NAME,
@@ -33,9 +36,9 @@ def get_app() -> FastAPI:
 
     start_mappers()
 
-    @app.get("/favicon.ico")
+    @app.get("/check-application")
     async def root():
-        return {"message:" "Application Running!"}
+        return {"message: " "Application Running..."}
 
     return app
 
