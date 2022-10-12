@@ -1,9 +1,9 @@
 import logging
+from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, Optional
-from dataclasses import dataclass
 
-from src.infrastructure.services.uow import SqlAlchemyUnitOfWork
+from src.commons.abstracts.sqlalchemy import SqlAlchemyUnitOfWork
 
 _logger = logging.getLogger(__name__)
 

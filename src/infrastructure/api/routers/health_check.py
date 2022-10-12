@@ -1,11 +1,11 @@
 from fastapi.routing import APIRouter
 
+from src.commons.abstracts.sqlalchemy import SqlAlchemyUnitOfWork
 from src.infrastructure.api.schemas.health_check import Message
 from src.infrastructure.services.health_check import (
     HealthCheckServiceQuery,
     StatusCheckEnum,
 )
-from src.infrastructure.services.uow import SqlAlchemyUnitOfWork
 
 health_router = APIRouter()
 

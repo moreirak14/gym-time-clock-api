@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from src.adapters.databases import Session
-
 from src.commons.abstracts.unity_of_work import AbstractUnitOfWork
 
 DEFAULT_SESSION_FACTORY = Session
