@@ -1,5 +1,5 @@
 import unittest
-from dataclasses import FrozenInstanceError, is_dataclass
+from dataclasses import is_dataclass
 from datetime import datetime
 
 from src.domain.work.entity.work import Work, WorkStatus
