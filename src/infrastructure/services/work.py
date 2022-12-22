@@ -1,6 +1,7 @@
 import logging
 from dataclasses import dataclass
-from typing import Optional, List
+from typing import List, Optional
+
 from src.commons.abstracts.sqlalchemy import SqlAlchemyUnitOfWork
 from src.infrastructure.api.schemas.work import ListWorkSchema, WorkInfoSchema
 

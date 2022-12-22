@@ -1,8 +1,10 @@
 import logging
 from typing import Type, TypeVar
+
+from sqlalchemy.orm import Session
+
 from src.adapters.repositories import SqlAlchemyRepository
 from src.domain.work.entity.work import Work
-from sqlalchemy.orm import Session
 
 T = TypeVar("T")
 _logger = logging.getLogger(__name__)

@@ -1,7 +1,8 @@
 from datetime import datetime
 
-from src.infrastructure.api.schemas import CustomBaseModel
 from pydantic import Field, conlist
+
+from src.infrastructure.api.schemas import CustomBaseModel
 
 
 class WorkInfoSchema(CustomBaseModel):

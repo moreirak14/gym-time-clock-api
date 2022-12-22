@@ -1,7 +1,9 @@
 import logging
+
 from fastapi import APIRouter, HTTPException, status
-from src.infrastructure.services.work import WorkServiceQuery
+
 from src.commons.abstracts.sqlalchemy import SqlAlchemyUnitOfWork
+from src.infrastructure.services.work import WorkServiceQuery
 
 work_router = APIRouter(prefix="/work", tags=["Work"])
 logger = logging.getLogger(__name__)
