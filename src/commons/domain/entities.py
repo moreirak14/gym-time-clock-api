@@ -4,7 +4,7 @@ from dataclasses import asdict, dataclass, field
 from src.commons.domain.value_objects import UniqueEntityId
 
 
-@dataclass(frozen=True)
+@dataclass()
 class Entity(ABC):
     unique_entity_id: UniqueEntityId = field(default_factory=UniqueEntityId)
 
