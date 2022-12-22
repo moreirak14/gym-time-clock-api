@@ -7,7 +7,7 @@ from src.commons.domain.entities import Entity
 from src.commons.domain.value_objects import UniqueEntityId
 
 
-@dataclass(frozen=True)
+@dataclass()
 class StubEntity(Entity):
     prop1: Optional[str] = None
     prop2: Optional[str] = None
