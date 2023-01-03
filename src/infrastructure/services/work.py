@@ -3,7 +3,12 @@ from dataclasses import dataclass
 from typing import List, Optional
 
 from src.commons.abstracts.sqlalchemy import SqlAlchemyUnitOfWork
-from src.infrastructure.api.schemas.work import ListWorkSchema, WorkInfoSchema
+from src.domain.work.entity.work import Work, WorkStatus
+from src.infrastructure.api.schemas.work import (
+    ListWorkSchema,
+    WorkInfoSchema,
+    WorkSchema,
+)
 
 _logger = logging.getLogger(__name__)
 
@@ -29,3 +34,18 @@ class WorkServiceQuery:
             (total, data) = self.uow.work.list_all()
             items = self._list_all_to_schema(data=data)
         return ListWorkSchema(total=total, items=items)
+
+    def create_work(self, data: WorkSchema):
+        with self.uow:
+            self.logger.info("Creating work...")
+            work = Work(
+                work_status=WorkStatus.Input.value if data.work_status == "Input" else WorkStatus.Output.value,
+                description=data.description
+            )
+            self.uow.work.create_work(work=work)
+            self.uow.commit()
+            return dict(
+                work_id=work.id,
+                status="Ok",
+                message="Dados registrado com sucesso!"
+            )
