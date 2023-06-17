@@ -14,3 +14,14 @@ class WorkInfoSchema(CustomBaseModel):
 class ListWorkSchema(CustomBaseModel):
     total: int
     items: conlist(WorkInfoSchema)
+
+
+class WorkSchema(CustomBaseModel):
+    work_status: str = Field(alias="workStatus")
+    description: str = Field(alias="description")
+
+
+class RegistrationSuccess(CustomBaseModel):
+    work_id: str = Field(alias="WorkID")
+    status: str
+    message: str

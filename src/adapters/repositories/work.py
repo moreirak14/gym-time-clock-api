@@ -20,3 +20,9 @@ class WorkRepository(SqlAlchemyRepository):
         query = query.order_by(Work.registered_at)
         total = query.count()
         return total, query.all()
+
+    def create_work(self, work: Work) -> Work:
+        self.logger.info("[Create Work] - Initializing service for insert in database")
+        self.session.add(work)
+        self.logger.info("[Create Work] - Work inserted successfully in database")
+        return work
